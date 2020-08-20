@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.cube.room.animationsandtransitions.animation.drawable.MusicButtonAnimationFragment
+import com.cube.room.animationsandtransitions.animation.reveal_hide_view.crossfade.CrossfadeAnimationFragment
 import com.cube.room.animationsandtransitions.animation.vector_drawable.BlackShapeAnimationFragment
 
 const val DRAWABLE_MUSIC_BUTTON = 0
 const val VECTOR_DRAWABLE_BLACK_SHAPE = 1
+const val VIEW_CROSSFADE = 2
+
+const val TABS_COUNT = 3
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -21,6 +25,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
         return when (position) {
             DRAWABLE_MUSIC_BUTTON -> MusicButtonAnimationFragment.newInstance(position)
             VECTOR_DRAWABLE_BLACK_SHAPE -> BlackShapeAnimationFragment.newInstance(position)
+            VIEW_CROSSFADE -> CrossfadeAnimationFragment.newInstance(position)
             else -> PlaceholderFragment.newInstance(position + 1)
         }
     }
@@ -30,6 +35,6 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     }
 
     override fun getCount(): Int {
-        return 2
+        return TABS_COUNT
     }
 }
