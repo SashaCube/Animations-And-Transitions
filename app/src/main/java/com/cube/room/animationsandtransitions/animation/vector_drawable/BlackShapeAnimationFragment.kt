@@ -1,6 +1,6 @@
-package com.cube.room.animationsandtransitions.animation.animation_drawable
+package com.cube.room.animationsandtransitions.animation.vector_drawable
 
-import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,16 +13,16 @@ import androidx.lifecycle.ViewModelProviders
 import com.cube.room.animationsandtransitions.R
 
 /**
- * Fragment with Drawable Animation (Music Button)
+ * Fragment with Vector Drawable Animation (Black Shape)
  */
-class MusicButtonAnimationFragment : Fragment() {
+class BlackShapeAnimationFragment : Fragment() {
 
-    private lateinit var viewModel: MusicButtonViewModel
-    private lateinit var buttonAnimation: AnimationDrawable
+    private lateinit var viewModel: BlackShapeViewModel
+    private var shapeVectorDrawable: AnimatedVectorDrawable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MusicButtonViewModel::class.java).apply {
+        viewModel = ViewModelProviders.of(this).get(BlackShapeViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
     }
@@ -31,10 +31,10 @@ class MusicButtonAnimationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_music_button_animation, container, false)
+        val root = inflater.inflate(R.layout.fragment_black_shape_animation, container, false)
         val labelTextView: TextView = root.findViewById(R.id.section_label)
         val descTextView: TextView = root.findViewById(R.id.section_desc)
-        val musicButtonImageView: ImageView = root.findViewById(R.id.animation_image_view)
+        val musicButtonImageView: ImageView? = root.findViewById(R.id.animation_image_view)
 
         viewModel.label.observe(viewLifecycleOwner, Observer<String> {
             labelTextView.text = it
@@ -44,9 +44,8 @@ class MusicButtonAnimationFragment : Fragment() {
             descTextView.text = it
         })
 
-        musicButtonImageView.apply {
-            setBackgroundResource(R.drawable.animation_drawable_music_button)
-            buttonAnimation = background as AnimationDrawable
+        musicButtonImageView?.background?.let {
+            shapeVectorDrawable = it as AnimatedVectorDrawable
         }
 
         return root
@@ -55,7 +54,7 @@ class MusicButtonAnimationFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        buttonAnimation.start()
+        shapeVectorDrawable?.start()
     }
 
     companion object {
@@ -70,8 +69,8 @@ class MusicButtonAnimationFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): MusicButtonAnimationFragment {
-            return MusicButtonAnimationFragment().apply {
+        fun newInstance(sectionNumber: Int): BlackShapeAnimationFragment {
+            return BlackShapeAnimationFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }

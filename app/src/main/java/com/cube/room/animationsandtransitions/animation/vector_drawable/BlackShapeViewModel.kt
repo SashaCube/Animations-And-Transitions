@@ -1,4 +1,4 @@
-package com.cube.room.animationsandtransitions.animation.animation_vector_drawable
+package com.cube.room.animationsandtransitions.animation.vector_drawable
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

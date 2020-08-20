@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.cube.room.animationsandtransitions.animation.animation_drawable.MusicButtonAnimationFragment
-import com.cube.room.animationsandtransitions.animation.animation_vector_drawable.BlackShapeAnimationFragment
+import com.cube.room.animationsandtransitions.animation.drawable.MusicButtonAnimationFragment
+import com.cube.room.animationsandtransitions.animation.vector_drawable.BlackShapeAnimationFragment
 
 const val DRAWABLE_MUSIC_BUTTON = 0
 const val VECTOR_DRAWABLE_BLACK_SHAPE = 1
