@@ -1,4 +1,4 @@
-package com.cube.room.animationsandtransitions.animation.reveal_hide_view.crossfade
+package com.cube.room.animationsandtransitions.animation.reveal_hide_view.cardflip
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -15,11 +15,11 @@ import androidx.lifecycle.ViewModelProviders
 import com.cube.room.animationsandtransitions.R
 
 /**
- * Fragment with Crossfade Views Animation
+ * Fragment with Card Flip Views Animation
  */
-class CrossfadeAnimationFragment : Fragment() {
+class CardFlipAnimationFragment : Fragment() {
 
-    private lateinit var viewModel: CrossfadeViewModel
+    private lateinit var viewModel: CardFlipViewModel
 
     private lateinit var contentView: View
     private lateinit var loadingView: View
@@ -34,7 +34,7 @@ class CrossfadeAnimationFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CrossfadeViewModel::class.java).apply {
+        viewModel = ViewModelProviders.of(this).get(CardFlipViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
     }
@@ -43,11 +43,11 @@ class CrossfadeAnimationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        root = inflater.inflate(R.layout.fragment_view_crossfade_animation, container, false)
-
-        initViews()
-        initObservers()
-        initAndStartLoopAnimation()
+        root = inflater.inflate(R.layout.fragment_view_card_flip_animation, container, false)
+//
+//        initViews()
+//        initObservers()
+//        initAndStartLoopAnimation()
 
         return root
     }
@@ -121,8 +121,8 @@ class CrossfadeAnimationFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): CrossfadeAnimationFragment {
-            return CrossfadeAnimationFragment().apply {
+        fun newInstance(sectionNumber: Int): CardFlipAnimationFragment {
+            return CardFlipAnimationFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }
